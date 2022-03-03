@@ -4,15 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".HomeActivity">
+
+    <Button
+        android:id="@+id/btnEntrees"
+        android:layout_width="211dp"
+        android:layout_height="84dp"
+        android:layout_marginBottom="50dp"
+        android:background="#F30909"
+        android:fontFamily="sans-serif"
+        android:onClick="displayCategory"
+        android:text="Entrées"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:layout_constraintBottom_toTopOf="@+id/btnPlats"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.847" />
+
+    <Button
+        android:id="@+id/btnPlats"
+        android:layout_width="211dp"
+        android:layout_height="84dp"
+        android:layout_marginBottom="50dp"
+        android:background="#F30909"
+        android:fontFamily="sans-serif"
+        android:onClick="displayToastMsg"
+        android:text="Plats"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:layout_constraintBottom_toTopOf="@+id/btnDesserts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.911" />
+
+    <Button
+        android:id="@+id/btnDesserts"
+        android:layout_width="211dp"
+        android:layout_height="84dp"
+        android:background="#F30909"
+        android:fontFamily="sans-serif"
+        android:onClick="displayToastMsg"
+        android:text="Desserts"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.757" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/restaurantName"
+        android:layout_width="255dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="72dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Coco Restau"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="40sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toStartOf="@+id/imgRestaurant"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imgRestaurant"
+        android:layout_width="94dp"
+        android:layout_height="92dp"
+        android:layout_marginTop="60dp"
+        android:background="#E61515"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/shef"
+        tools:src="@tools:sample/avatars[2]" />
 </androidx.constraintlayout.widget.ConstraintLayout>

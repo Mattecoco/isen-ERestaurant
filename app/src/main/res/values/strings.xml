@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidERestaurant</string>
+    <string name="category_name">CategoryName</string>
 </resources>
