@@ -2,6 +2,7 @@ package fr.isen.megalizzi.androiderestaurant
 
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
@@ -22,6 +23,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun displayCategory(v: View?) {
+        val categoryTitle = findViewById<TextView>(R.id.categoryTitle)
+        categoryTitle.text = "test"
         setContentView(R.layout.activity_category)
     }
 }
