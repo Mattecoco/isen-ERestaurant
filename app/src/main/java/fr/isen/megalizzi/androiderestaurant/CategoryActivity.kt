@@ -2,11 +2,13 @@ package fr.isen.megalizzi.androiderestaurant
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import fr.isen.megalizzi.androiderestaurant.databinding.ActivityCategoryBinding
 
 class CategoryActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityCategoryBinding
+
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var adapter: RecyclerAdapter
 
@@ -15,15 +17,17 @@ class CategoryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_category)
+
+        binding = ActivityCategoryBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         // set the category title
-        val title = findViewById<TextView>(R.id.categoryTitle)
-        title.text = intent.getStringExtra(HomeActivity.CATEGORY_KEY)
+        binding.categoryTitle.text = intent.getStringExtra(HomeActivity.CATEGORY_KEY)
 
 
         /* retrieve list of meals depending on category title */
-        when (title.text) {
+        when (binding.categoryTitle.text) {
             "Entrées"   -> stringArray = resources.getStringArray(R.array.entreesListe)
             "Plats"     -> stringArray = resources.getStringArray(R.array.platsListe)
             "Desserts"  -> stringArray = resources.getStringArray(R.array.dessertsListe)
@@ -40,7 +44,7 @@ class CategoryActivity : AppCompatActivity() {
 
 
         // get the recyclerview
-        val recyclerView = findViewById<RecyclerView>(R.id.categoryList)
+        val recyclerView = binding.categoryList
 
         // set the LinearLayoutManager for the recyclerview
         linearLayoutManager = LinearLayoutManager(this)

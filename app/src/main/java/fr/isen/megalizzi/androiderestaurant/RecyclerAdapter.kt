@@ -1,31 +1,27 @@
 package fr.isen.megalizzi.androiderestaurant
 
-import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class RecyclerAdapter(private val meals: ArrayList<Meal>) : RecyclerView.Adapter<RecyclerAdapter.MealsHolder>()  {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.MealsHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealsHolder {
         val inflatedView = LayoutInflater.from(parent.context)
             .inflate(R.layout.categorylist_item_row, parent, false)
         return MealsHolder(inflatedView)
     }
 
-    override fun onBindViewHolder(holder: RecyclerAdapter.MealsHolder, position: Int) {
+    override fun onBindViewHolder(holder: MealsHolder, position: Int) {
         val itemMeal = meals[position]
         holder.bindMeal(itemMeal)
     }
 
-    override fun getItemCount(): Int {
-        return meals.size
-    }
+    override fun getItemCount(): Int = meals.size
 
 
     /* create the MealsHolder nested class */
@@ -53,7 +49,7 @@ class RecyclerAdapter(private val meals: ArrayList<Meal>) : RecyclerView.Adapter
 
         // 5. Add a key for easy reference to the item launching the RecyclerView.
         companion object {
-            private val MEAL_KEY = "MEAL"
+            private const val MEAL_KEY = "MEAL"
         }
 
         fun bindMeal(meal: Meal) {
