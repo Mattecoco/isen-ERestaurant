@@ -2,4 +2,29 @@
     <string name="app_name">AndroidERestaurant</string>
     <string name="category_name">CategoryName</string>
     <string name="main_title">Coco, Reste, Oh!</string>
+
+    <string-array name="entreesListe">
+        <item>Salade de chèvre chaud</item>
+        <item>Soupe d\'asperges</item>
+        <item>Salade César</item>
+        <item>Yeux de chèvre</item>
+        <item>Tablette de charcuterie</item>
+    </string-array>
+
+    <string-array name="platsListe">
+        <item>Putin</item>
+        <item>Goulasch</item>
+        <item>Tartiflette</item>
+        <item>Raclette</item>
+        <item>Ris de veau</item>
+    </string-array>
+
+    <string-array name="dessertsListe">
+        <item>Kouign-Aman</item>
+        <item>Panacotta</item>
+        <item>Banana Split</item>
+        <item>Dame Blanche</item>
+        <item>Café Gourmand</item>
+    </string-array>
+
 </resources>
