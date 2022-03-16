@@ -1,5 +1,6 @@
 package fr.isen.megalizzi.androiderestaurant
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerAdapter(private val meals: ArrayList<Meal>) : RecyclerView.Adapter<RecyclerAdapter.MealsHolder>()  {
-
+class RecyclerAdapter(private val meals: ArrayList<Dish>) : RecyclerView.Adapter<RecyclerAdapter.MealsHolder>()  {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealsHolder {
         val inflatedView = LayoutInflater.from(parent.context)
@@ -18,6 +18,7 @@ class RecyclerAdapter(private val meals: ArrayList<Meal>) : RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: MealsHolder, position: Int) {
         val itemMeal = meals[position]
+
         holder.bindMeal(itemMeal)
     }
 
@@ -30,7 +31,7 @@ class RecyclerAdapter(private val meals: ArrayList<Meal>) : RecyclerView.Adapter
 
         // 2. add reference to the item view to later access properties (name, image...)
         private var view: View = v
-        private var meal: Meal? = null
+        private var meal: Dish? = null
 
         // 3. Initialize the View.OnClickListener.
         init {
@@ -40,25 +41,24 @@ class RecyclerAdapter(private val meals: ArrayList<Meal>) : RecyclerView.Adapter
         // 4. Implement the required method for View.OnClickListener since ViewHolders are responsible for their own event handling.
         override fun onClick(v: View) {
             Log.d("RecyclerView", "CLICK!")
-            /*val context = itemView.context
-            val showPhotoIntent = Intent(context, MealActivity::class.java)
-            showPhotoIntent.putExtra(MEAL_KEY, meal)
-            context.startActivity(showPhotoIntent)*/
-
+            val context = itemView.context
+            val showMealIntent = Intent(context, MealActivity::class.java)
+            showMealIntent.putExtra(MEAL_KEY, meal?.categNameFr)
+            context.startActivity(showMealIntent)
         }
 
         // 5. Add a key for easy reference to the item launching the RecyclerView.
         companion object {
-            private const val MEAL_KEY = "MEAL"
+            const val MEAL_KEY = "MEAL"
         }
 
-        fun bindMeal(meal: Meal) {
+        fun bindMeal(meal: Dish) {
             this.meal = meal
 
             //val itemImage = view.findViewById<ImageButton>(R.id.itemImage)
             val itemDescription = view.findViewById<TextView>(R.id.itemDescription)
             //itemImage.source = meal.image
-            itemDescription.text = meal.mealName
+            itemDescription.text = meal.categNameFr
         }
     }
 }
