@@ -16,13 +16,20 @@ class MealActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        // get the meal name
-        val mealName = intent.getStringExtra(RecyclerAdapter.DishesHolder.MEAL_KEY)
+        // display the dish name
+        val meal = intent.getSerializableExtra(RecyclerAdapter.DishesHolder.DISH_KEY) as Dish
+        binding.mealName.text = meal.nameFr
 
-        binding.mealName.text = mealName
+        /* create the adapter for the viewPager2 */
+        binding.carouselVenere.adapter = DetailImagePager(this, meal.images_urls)
 
-        Toast.makeText(this, mealName, Toast.LENGTH_LONG).show()
+        /* display the ingredients */
+        var textIngredients: String = ""
+        meal.ingredients.forEach { textIngredients = "$textIngredients${it.nameFr}, " }
+        textIngredients = textIngredients.substring(0, textIngredients.length-2)
+
+        binding.ingredients.text = textIngredients
+
+        Toast.makeText(this, meal.nameFr, Toast.LENGTH_LONG).show()
     }
-
-
 }

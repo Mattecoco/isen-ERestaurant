@@ -45,13 +45,13 @@ class RecyclerAdapter(private val dishes: ArrayList<Dish>) : RecyclerView.Adapte
             Log.d("RecyclerView", "CLICK!")
             val context = itemView.context
             val showMealIntent = Intent(context, MealActivity::class.java)
-            showMealIntent.putExtra(MEAL_KEY, dish?.categNameFr)
+            showMealIntent.putExtra(DISH_KEY, dish)
             context.startActivity(showMealIntent)
         }
 
         // 5. Add a key for easy reference to the item launching the RecyclerView.
         companion object {
-            const val MEAL_KEY = "MEAL"
+            const val DISH_KEY = "DISH"
         }
 
         fun bindMeal(dish: Dish) {
@@ -76,6 +76,10 @@ class RecyclerAdapter(private val dishes: ArrayList<Dish>) : RecyclerView.Adapte
                     .load(R.drawable.dish_placeholder)
                     .into(itemImage)
             }
+
+            /* display the price */
+            val itemPrice = view.findViewById<TextView>(R.id.itemPrice)
+            itemPrice.text = "${dish.prices[0].price}€"
         }
     }
 }

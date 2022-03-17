@@ -19,25 +19,52 @@
         app:layout_constraintVertical_bias="1.0"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/itemDescription"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_gravity="center|clip_vertical|start"
-        android:layout_weight="1"
-        android:background="#CCFFD740"
-        android:elegantTextHeight="true"
-        android:ellipsize="end"
-        android:fontFamily="sans-serif-condensed"
-        android:gravity="center"
-        android:maxLines="5"
-        android:paddingStart="12dp"
-        android:textAlignment="textStart"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/itemImage"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Porc Sauté en sauce Marengo" />
+        app:layout_constraintStart_toEndOf="@+id/itemImage">
+
+        <TextView
+            android:id="@+id/itemDescription"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|clip_vertical|start"
+            android:layout_weight="1"
+            android:background="#CCFFD740"
+            android:elegantTextHeight="true"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:maxLines="5"
+            android:paddingStart="12dp"
+            android:textAlignment="textStart"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/itemPrice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Porc Sauté en sauce Marengo" />
+
+        <TextView
+            android:id="@+id/itemPrice"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#CCFFAB40"
+            android:elegantTextHeight="true"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:maxLines="5"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="3dp"
+            tools:text="15,5€" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

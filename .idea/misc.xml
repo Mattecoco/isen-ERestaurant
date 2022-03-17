@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/mmega/AndroidStudioProjects/AndroidERestaurant/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/mmega/AndroidStudioProjects/AndroidERestaurant/app/src/main/res/drawable/rounded_borders.xml" value="0.126" />
         <entry key="..\:/Users/mmega/AndroidStudioProjects/AndroidERestaurant/app/src/main/res/layout/activity_category.xml" value="0.33" />
         <entry key="..\:/Users/mmega/AndroidStudioProjects/AndroidERestaurant/app/src/main/res/layout/activity_home.xml" value="0.1" />
-        <entry key="..\:/Users/mmega/AndroidStudioProjects/AndroidERestaurant/app/src/main/res/layout/activity_meal.xml" value="0.22" />
+        <entry key="..\:/Users/mmega/AndroidStudioProjects/AndroidERestaurant/app/src/main/res/layout/activity_meal.xml" value="0.33" />
         <entry key="..\:/Users/mmega/AndroidStudioProjects/AndroidERestaurant/app/src/main/res/layout/categorylist_item_row.xml" value="0.25" />
+        <entry key="..\:/Users/mmega/AndroidStudioProjects/AndroidERestaurant/app/src/main/res/layout/fragment_image.xml" value="0.1675929884566054" />
       </map>
     </option>
   </component>

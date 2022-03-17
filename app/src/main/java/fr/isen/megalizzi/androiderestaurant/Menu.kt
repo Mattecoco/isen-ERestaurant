@@ -32,3 +32,9 @@ data class Ingredients (
     @SerializedName("name_fr"     ) var nameFr     : String? = null,
 
 ) : Serializable
+
+data class Prices (
+
+    @SerializedName("price"       ) var price      : String? = null,
+
+) : Serializable

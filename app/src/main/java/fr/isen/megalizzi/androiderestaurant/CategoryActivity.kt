@@ -26,7 +26,7 @@ class CategoryActivity : AppCompatActivity() {
         setContentView(view)
 
         // create an empty adapter
-        binding.categoryList.adapter = RecyclerAdapter(arrayListOf())
+        adapter = RecyclerAdapter(arrayListOf())
 
         // set the category title
         val title: String? = intent.getStringExtra(HomeActivity.CATEGORY_KEY)
@@ -63,7 +63,7 @@ class CategoryActivity : AppCompatActivity() {
         Log.d("CategoryActivity", "Deserts parsed with GSON : " +gsonPretty.toJson(menu.menus[2]))
 
         /* filter data depending on category and store it in the class */
-        val dishes = menu.menus.firstOrNull { it.categNameFr == this.title }?.dishes
+        val dishes = menu.menus.firstOrNull { it.categNameFr == category }?.dishes
 
         /* setup recyclerview with the data collected */
         setupRecyclerView(dishes)

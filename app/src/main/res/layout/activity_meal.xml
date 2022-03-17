@@ -6,15 +6,73 @@
     android:layout_height="match_parent"
     tools:context=".MealActivity">
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/carousel_venere"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+
     <TextView
         android:id="@+id/mealName"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAllCaps="true"
-        android:textSize="48sp"
+        android:gravity="center|start"
+        android:padding="8dp"
+        android:textAllCaps="false"
+        android:textSize="42sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carousel_venere"
+        tools:layout_editor_absoluteX="-16dp"
         tools:text="mealName" />
+
+    <TextView
+        android:id="@+id/ingredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textAlignment="viewStart"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/mealName"
+        tools:layout_editor_absoluteX="28dp"
+        tools:text="poivrons, cornichons, salade, tomate, oignon, pommes de terre" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ingredients">
+
+        <ImageButton
+            android:id="@+id/btnMinus"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="100dp"
+            android:background="@drawable/rounded_borders"
+            android:backgroundTint="#FFAB40"
+            android:scaleType="centerInside"
+            android:src="@drawable/minus_icon"
+            android:tint="#FDFDFD"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/btnPlus"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginEnd="100dp"
+            android:background="@drawable/rounded_borders"
+            android:backgroundTint="#FFAB40"
+            android:scaleType="centerInside"
+            android:src="@drawable/plus_icon"
+            android:tint="#FDFDFD"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
