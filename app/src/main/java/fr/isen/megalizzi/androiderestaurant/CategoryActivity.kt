@@ -7,10 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
-import com.android.volley.Response
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
 import fr.isen.megalizzi.androiderestaurant.databinding.ActivityCategoryBinding
 import org.json.JSONObject
 
@@ -20,9 +18,6 @@ class CategoryActivity : AppCompatActivity() {
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var adapter: RecyclerAdapter
 
-    private lateinit var stringArray: Array<String>
-    private var mealsList = ArrayList<Dish>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -30,34 +25,19 @@ class CategoryActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        // create an empty adapter
+        binding.categoryList.adapter = RecyclerAdapter(arrayListOf())
+
         // set the category title
-        binding.categoryTitle.text = intent.getStringExtra(HomeActivity.CATEGORY_KEY)
+        val title: String? = intent.getStringExtra(HomeActivity.CATEGORY_KEY)
+        binding.categoryTitle.text = title
 
         /* retrieving data */
-        // testing volley post request
-        volleyPostRequest()
-
-        /* retrieve list of meals depending on category title */
-        when (binding.categoryTitle.text) {
-            "Entrées"   -> stringArray = resources.getStringArray(R.array.entreesListe)
-            "Plats"     -> stringArray = resources.getStringArray(R.array.platsListe)
-            "Desserts"  -> stringArray = resources.getStringArray(R.array.dessertsListe)
-
-            else -> {   // default
-                print("Categorie non reconnue.")
-            }
-        }
-
-        // create Meal object for each entry
-        /*for(element in stringArray) {
-            mealsList.add(Meal(element))
-        }*/
-
-        /* setup recyclerview */
-        setupRecyclerView()
+        // volley post request the webservice for catering menus
+        volleyPostRequest(title.orEmpty())
     }
 
-    private fun setupRecyclerView() {
+    private fun setupRecyclerView(dishesList : ArrayList<Dish>?) {
         // get the recyclerview
         val recyclerView = binding.categoryList
 
@@ -66,23 +46,30 @@ class CategoryActivity : AppCompatActivity() {
         recyclerView.layoutManager = linearLayoutManager
 
         // link the adapter to the
-        adapter = RecyclerAdapter(mealsList)
+        if (dishesList != null) {
+            adapter = RecyclerAdapter(dishesList)
+        }
         recyclerView.adapter = adapter
     }
 
-    private fun parseJsonResponse(response: JSONObject) {
+    private fun parseJsonResponse(response: JSONObject, category: String) {
         val json = "$response"
         val gson = Gson()
-        //val menuType = object : TypeToken<ArrayList<Menu>>() {}.type
         val menu = gson.fromJson<Menu>(json, Menu::class.java)
 
-        Log.d("CategoryActivity", "data parsed with gson: $menu")
-
         val gsonPretty = GsonBuilder().setPrettyPrinting().create()
-        Log.d("CategoryActivity", gsonPretty.toJson(menu))
+        Log.d("CategoryActivity", "Starters parsed with GSON : " + gsonPretty.toJson(menu.menus[0]))
+        Log.d("CategoryActivity", "Main courses parsed with GSON : " +gsonPretty.toJson(menu.menus[1]))
+        Log.d("CategoryActivity", "Deserts parsed with GSON : " +gsonPretty.toJson(menu.menus[2]))
+
+        /* filter data depending on category and store it in the class */
+        val dishes = menu.menus.firstOrNull { it.categNameFr == this.title }?.dishes
+
+        /* setup recyclerview with the data collected */
+        setupRecyclerView(dishes)
     }
 
-    private fun volleyPostRequest() {
+    private fun volleyPostRequest(category: String) {
         var text = ""
         val url = "http://test.api.catering.bluecodegames.com/menu"
 
@@ -103,7 +90,7 @@ class CategoryActivity : AppCompatActivity() {
                 }
                 Log.d("CategoryActivity", text)
 
-                parseJsonResponse(response)
+                parseJsonResponse(response, category)
 
             }, {
                 // Error in request
@@ -125,5 +112,4 @@ class CategoryActivity : AppCompatActivity() {
         // Add the volley post request to the request queue
         VolleySingleton.getInstance(this).addToRequestQueue(request)
     }
-
 }

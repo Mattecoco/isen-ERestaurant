@@ -3,7 +3,6 @@ package fr.isen.megalizzi.androiderestaurant
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import fr.isen.megalizzi.androiderestaurant.databinding.ActivityCategoryBinding
 import fr.isen.megalizzi.androiderestaurant.databinding.ActivityMealBinding
 
 class MealActivity : AppCompatActivity() {
@@ -18,7 +17,7 @@ class MealActivity : AppCompatActivity() {
         setContentView(view)
 
         // get the meal name
-        val mealName = intent.getStringExtra(RecyclerAdapter.MealsHolder.MEAL_KEY)
+        val mealName = intent.getStringExtra(RecyclerAdapter.DishesHolder.MEAL_KEY)
 
         binding.mealName.text = mealName
 

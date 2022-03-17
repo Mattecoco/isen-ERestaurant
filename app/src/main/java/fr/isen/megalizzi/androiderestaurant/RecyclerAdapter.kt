@@ -5,33 +5,35 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
-class RecyclerAdapter(private val meals: ArrayList<Dish>) : RecyclerView.Adapter<RecyclerAdapter.MealsHolder>()  {
+class RecyclerAdapter(private val dishes: ArrayList<Dish>) : RecyclerView.Adapter<RecyclerAdapter.DishesHolder>()  {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealsHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DishesHolder {
         val inflatedView = LayoutInflater.from(parent.context)
             .inflate(R.layout.categorylist_item_row, parent, false)
-        return MealsHolder(inflatedView)
+        return DishesHolder(inflatedView)
     }
 
-    override fun onBindViewHolder(holder: MealsHolder, position: Int) {
-        val itemMeal = meals[position]
+    override fun onBindViewHolder(holder: DishesHolder, position: Int) {
+        val dish : Dish = dishes[position]
 
-        holder.bindMeal(itemMeal)
+        holder.bindMeal(dish)
     }
 
-    override fun getItemCount(): Int = meals.size
+    override fun getItemCount(): Int = dishes.size
 
 
     /* create the MealsHolder nested class */
     // 1. Make the class extend RecyclerView.ViewHolder, allowing the adapter to use it as as a ViewHolder.
-    class MealsHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
+    class DishesHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
 
         // 2. add reference to the item view to later access properties (name, image...)
         private var view: View = v
-        private var meal: Dish? = null
+        private var dish: Dish? = null
 
         // 3. Initialize the View.OnClickListener.
         init {
@@ -43,7 +45,7 @@ class RecyclerAdapter(private val meals: ArrayList<Dish>) : RecyclerView.Adapter
             Log.d("RecyclerView", "CLICK!")
             val context = itemView.context
             val showMealIntent = Intent(context, MealActivity::class.java)
-            showMealIntent.putExtra(MEAL_KEY, meal?.categNameFr)
+            showMealIntent.putExtra(MEAL_KEY, dish?.categNameFr)
             context.startActivity(showMealIntent)
         }
 
@@ -52,13 +54,28 @@ class RecyclerAdapter(private val meals: ArrayList<Dish>) : RecyclerView.Adapter
             const val MEAL_KEY = "MEAL"
         }
 
-        fun bindMeal(meal: Dish) {
-            this.meal = meal
+        fun bindMeal(dish: Dish) {
+            this.dish = dish
 
-            //val itemImage = view.findViewById<ImageButton>(R.id.itemImage)
+            /* display name of the dish */
             val itemDescription = view.findViewById<TextView>(R.id.itemDescription)
-            //itemImage.source = meal.image
-            itemDescription.text = meal.categNameFr
+            itemDescription.text = dish.nameFr
+
+            /* display dish image with Picasso */
+            val itemImage = view.findViewById<ImageView>(R.id.itemImage)
+            val url : String = dish.images_urls[0]
+
+            if (url.isNotEmpty()) {
+                Picasso.get()
+                    .load(url)
+                    .placeholder(R.drawable.dish_placeholder2)
+                    .error(R.drawable.error_placeholder)
+                    .into(itemImage)
+            } else {
+                Picasso.get()
+                    .load(R.drawable.dish_placeholder)
+                    .into(itemImage)
+            }
         }
     }
 }

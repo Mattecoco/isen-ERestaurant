@@ -53,7 +53,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
-    fun displayCategory(category: String) {
+    private fun displayCategory(category: String) {
         val intent = Intent(this, CategoryActivity::class.java)
         intent.putExtra(CATEGORY_KEY, category)
         startActivity(intent)
