@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".MealActivity">
 
+    <Button
+        android:id="@+id/btnBuy"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#FFAB40"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="TOTAL 12€" />
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/carousel_venere"
         android:layout_width="match_parent"
@@ -41,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="75dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ingredients">
 
@@ -52,13 +68,27 @@
             android:layout_marginStart="100dp"
             android:background="@drawable/rounded_borders"
             android:backgroundTint="#FFAB40"
+            android:onClick="minusOne"
             android:scaleType="centerInside"
             android:src="@drawable/minus_icon"
-            android:tint="#FDFDFD"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="SpeakableTextPresentCheck" />
+            app:tint="#FDFDFD"
+            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/btn_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnPlus"
+            app:layout_constraintStart_toEndOf="@+id/btnMinus"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="12" />
 
         <ImageButton
             android:id="@+id/btnPlus"
@@ -67,12 +97,15 @@
             android:layout_marginEnd="100dp"
             android:background="@drawable/rounded_borders"
             android:backgroundTint="#FFAB40"
-            android:scaleType="centerInside"
+            android:onClick="plusOne"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/plus_icon"
-            android:tint="#FDFDFD"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="SpeakableTextPresentCheck" />
+            app:tint="#FDFDFD"
+            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck,ImageContrastCheck" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
