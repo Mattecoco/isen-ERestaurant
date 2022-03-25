@@ -2,9 +2,8 @@ package fr.isen.megalizzi.androiderestaurant
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Half.toFloat
 import android.view.View
-import android.widget.Toast
+import com.google.android.material.snackbar.Snackbar
 import fr.isen.megalizzi.androiderestaurant.databinding.ActivityMealBinding
 
 class MealActivity : AppCompatActivity() {
@@ -41,11 +40,20 @@ class MealActivity : AppCompatActivity() {
         defaultPrice = meal.prices[0].price?.toFloatOrNull()
 
         if (defaultPrice != null)
-            binding.btnBuy.text = "TOTAL " + defaultPrice.toString().plus("€")
+            binding.btnBuy.text = "AJOUTER AU PANIER - " + defaultPrice.toString().plus("€")
         else
             binding.btnBuy.text = "Error : no price"
 
-        Toast.makeText(this, meal.nameFr, Toast.LENGTH_LONG).show()
+        /* set btnBuy onclickListener */
+        binding.btnBuy.setOnClickListener {
+            // create product item
+            val articlePanierItem: ArticlePanier = ArticlePanier(meal.nameFr, quantity, meal.prices[0].price?.toFloat(), meal.images_urls[0])
+
+            // add product to cart
+            PanierSingleton.addProduct(articlePanierItem)
+
+            Snackbar.make(binding.root, "${quantity} ${meal.nameFr} ont été ajoutés au panier", Snackbar.LENGTH_LONG).show()
+        }
     }
 
     private fun updateButtons() {
@@ -56,7 +64,7 @@ class MealActivity : AppCompatActivity() {
         binding.btnQuantity.text = quantity.toString()
 
         if (price != null) {
-            binding.btnBuy.text = "TOTAL " + price.toString().plus("€")
+            binding.btnBuy.text = "AJOUTER AU PANIER " + price.toString().plus("€")
         }
     }
 

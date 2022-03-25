@@ -29,7 +29,7 @@ class ImageFragment(val url: String?) : Fragment() {
         val imageFragment = binding.imageFragment
         Picasso.get()
             .load(url)
-            .placeholder(R.drawable.dish_placeholder)
+            .placeholder(R.drawable.dish_placeholder2)
             .into(imageFragment)
     }
 }
