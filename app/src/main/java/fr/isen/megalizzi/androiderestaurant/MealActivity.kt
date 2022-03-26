@@ -20,7 +20,7 @@ class MealActivity : AppCompatActivity() {
         setContentView(view)
 
         // display the dish name
-        val meal = intent.getSerializableExtra(RecyclerAdapter.DishesHolder.DISH_KEY) as Dish
+        val meal = intent.getSerializableExtra(CategoryAdapter.DishesHolder.DISH_KEY) as Dish
         binding.mealName.text = meal.nameFr
 
         /* create the adapter for the viewPager2 */
@@ -47,10 +47,10 @@ class MealActivity : AppCompatActivity() {
         /* set btnBuy onclickListener */
         binding.btnBuy.setOnClickListener {
             // create product item
-            val articlePanierItem: ArticlePanier = ArticlePanier(meal.nameFr, quantity, meal.prices[0].price?.toFloat(), meal.images_urls[0])
+            val articlePanierItem: PanierItem = PanierItem(meal.nameFr, quantity, meal.prices[0].price?.toFloat(), meal.images_urls[0])
 
             // add product to cart
-            PanierSingleton.addProduct(articlePanierItem)
+            PanierSingleton.addProduct(articlePanierItem, this.applicationContext)
 
             Snackbar.make(binding.root, "${quantity} ${meal.nameFr} ont été ajoutés au panier", Snackbar.LENGTH_LONG).show()
         }

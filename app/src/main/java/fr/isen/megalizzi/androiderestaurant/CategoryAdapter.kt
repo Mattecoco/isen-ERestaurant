@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
-class RecyclerAdapter(private val dishes: ArrayList<Dish>) : RecyclerView.Adapter<RecyclerAdapter.DishesHolder>()  {
+class CategoryAdapter(private val dishes: ArrayList<Dish>) : RecyclerView.Adapter<CategoryAdapter.DishesHolder>()  {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DishesHolder {
         val inflatedView = LayoutInflater.from(parent.context)

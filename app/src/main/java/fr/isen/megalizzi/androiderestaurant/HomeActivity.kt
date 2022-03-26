@@ -20,20 +20,19 @@ class HomeActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.btnEntrees.setOnClickListener {
-            displayToastMsg()
             displayCategory("Entrées")
         }
 
         binding.btnPlats.setOnClickListener {
-            displayToastMsg()
             displayCategory("Plats")
         }
 
         binding.btnDesserts.setOnClickListener {
-            displayToastMsg()
             displayCategory("Desserts")
         }
 
+        // init PanierSingleton
+        PanierSingleton.initWith(this)
     }
 
     override fun onDestroy() {
@@ -42,16 +41,10 @@ class HomeActivity : AppCompatActivity() {
         Log.d("HomeActivity", "L'activité HomeActivity est détruite.")
     }
 
-
-    fun displayToastMsg() {
-        toastMsg("Ta grand mèèèère")
-    }
-
     private fun toastMsg(msg: String?) {
         val toast = Toast.makeText(this, msg, Toast.LENGTH_LONG)
         toast.show()
     }
-
 
     private fun displayCategory(category: String) {
         val intent = Intent(this, CategoryActivity::class.java)

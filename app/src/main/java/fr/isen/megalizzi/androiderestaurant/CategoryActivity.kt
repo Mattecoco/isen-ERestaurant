@@ -16,7 +16,7 @@ class CategoryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCategoryBinding
     private lateinit var linearLayoutManager: LinearLayoutManager
-    private lateinit var adapter: RecyclerAdapter
+    private lateinit var adapter: CategoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +26,7 @@ class CategoryActivity : AppCompatActivity() {
         setContentView(view)
 
         // create an empty adapter
-        adapter = RecyclerAdapter(arrayListOf())
+        adapter = CategoryAdapter(arrayListOf())
 
         // set the category title
         val title: String? = intent.getStringExtra(HomeActivity.CATEGORY_KEY)
@@ -47,7 +47,7 @@ class CategoryActivity : AppCompatActivity() {
 
         // link the adapter to the
         if (dishesList != null) {
-            adapter = RecyclerAdapter(dishesList)
+            adapter = CategoryAdapter(dishesList)
         }
         recyclerView.adapter = adapter
     }
