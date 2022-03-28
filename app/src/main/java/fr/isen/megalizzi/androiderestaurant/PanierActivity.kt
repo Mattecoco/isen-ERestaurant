@@ -1,11 +1,10 @@
 package fr.isen.megalizzi.androiderestaurant
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import fr.isen.megalizzi.androiderestaurant.databinding.ActivityPanierBinding
 
-class PanierActivity : AppCompatActivity() {
+class PanierActivity : CustomAppActivity() {
 
     private lateinit var binding: ActivityPanierBinding
     private lateinit var linearLayoutManager: LinearLayoutManager

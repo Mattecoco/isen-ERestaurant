@@ -6,7 +6,7 @@ import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import fr.isen.megalizzi.androiderestaurant.databinding.ActivityMealBinding
 
-class MealActivity : AppCompatActivity() {
+class MealActivity : CustomAppActivity() {
 
     private lateinit var binding: ActivityMealBinding
     private var defaultPrice: Float? = null

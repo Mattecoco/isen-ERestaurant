@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -42,8 +43,9 @@ class PanierAdapter(
 
         // 3. Initialize the OnClickListener for the delete button
         init {
-            view.findViewById<Button>(R.id.btnDelete).setOnClickListener {
-                produit?.quantity = produit?.quantity?.minus(1)
+            view.findViewById<ImageButton>(R.id.btnDelete).setOnClickListener {
+                val produit = this.produit.copy()
+                produit.quantity = -1
                 produit?.let { it1 -> PanierSingleton.addProduct(it1, ctx) }
                 updateText()
                 adapter.notifyDataSetChanged()

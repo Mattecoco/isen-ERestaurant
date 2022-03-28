@@ -77,8 +77,9 @@
 
             <ImageButton
                 android:id="@+id/btnDelete"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/rounded_borders"
                 android:backgroundTint="#D32F2F"
                 android:onClick="minusOne"
@@ -87,10 +88,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.8"
                 app:tint="#FDFDFD"
-                tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+                tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck,TouchTargetSizeCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import fr.isen.megalizzi.androiderestaurant.databinding.ActivityHomeBinding
 
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : CustomAppActivity() {
 
     private lateinit var binding: ActivityHomeBinding
 

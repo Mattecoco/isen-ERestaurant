@@ -12,7 +12,7 @@ import com.google.gson.GsonBuilder
 import fr.isen.megalizzi.androiderestaurant.databinding.ActivityCategoryBinding
 import org.json.JSONObject
 
-class CategoryActivity : AppCompatActivity() {
+class CategoryActivity : CustomAppActivity() {
 
     private lateinit var binding: ActivityCategoryBinding
     private lateinit var linearLayoutManager: LinearLayoutManager
